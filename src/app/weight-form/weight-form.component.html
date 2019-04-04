@@ -1,0 +1,9 @@
+<h1>Weight Form:</h1>
+<form (ngSubmit)="onSubmit()" #weightForm="ngForm">
+  <label for="weight"></label>
+  <input [(ngModel)]="model.weight" id="weight" type="number" name="weight" required>
+  <button [disabled]="!weightForm.form.valid" type="submit">Submit</button>
+</form>
+<div [hidden]="!submitted">
+  <h2>Submitted!</h2>
+</div>
