@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
     this.token = this.cookieService.get('token');
     this.index = this.email.indexOf('@');
     this.name = this.email.slice(0, this.index);
-    this.getWeights();
   }
   getWeights(): void {
     this.weightService.getEntryList(this.email, this.token)
