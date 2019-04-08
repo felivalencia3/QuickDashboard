@@ -29,7 +29,7 @@ export class WeightService {
       .get<Entry[]>(this.serverUrl + '?user=' + email, httpOptions)
       .pipe(tap(_ => this.log('Fetched Entries')));
   }
-  addWeight(user: User, token: string): Observable<any> {
+  addWeight(weight: number, email: string , token: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Token ${token}`,
@@ -40,8 +40,8 @@ export class WeightService {
       `${this.serverUrl}/new`,
       {
         entry: {
-          user: user.email,
-          weight: user.weight
+          user: email,
+          weight: weight
         }
       },
       httpOptions
