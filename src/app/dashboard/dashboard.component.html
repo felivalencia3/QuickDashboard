@@ -1,4 +1,8 @@
-<h1>Welcome to QuickDashboard, {{email}}</h1>
+<h1>Welcome to QuickDashboard, <div *ngIf="name">{{name}}</div></h1>
+<div *ngIf="email && token">
+  <p>Email: {{email}}</p>
+  <p>Token: {{ token | slice:0:4 }}</p>
+</div>
 <ul>
   <li>
     <p>Graph:</p>
@@ -7,6 +11,7 @@
   <li>
     <p>WeightForm:</p>
     <app-weight-form [email]="email"></app-weight-form>
+    <app-weight-list [token]="token" [email]="email"></app-weight-list>
   </li>
   <li>
     <p>Calculator:</p>

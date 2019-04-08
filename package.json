@@ -2,7 +2,10 @@
   "name": "quick-dashboard",
   "version": "0.0.0",
   "scripts": {
+    "start:heroku": "node dist/server",
+    "postinstall": "npm run build:ssr",
     "ng": "ng",
+    "dev": "npm run build:ssr && npm run serve:ssr",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

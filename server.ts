@@ -41,8 +41,9 @@ app.get('', (req, res) => {
   res.render('index', { req });
 });
 app.get('/auth', (req, res) => {
-  res.cookie('email', req.query.email);
-  res.redirect('/');
+  res.cookie('email', req.query.email, {expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))});
+  res.cookie('token', req.query.token, {expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))});
+  res.send('cookies set.');
 });
 // Start up the Node server
 app.listen(PORT, () => {
