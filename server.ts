@@ -43,7 +43,7 @@ app.get('', (req, res) => {
 app.get('/auth', (req, res) => {
   res.cookie('email', req.query.email, {expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))});
   res.cookie('token', req.query.token, {expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))});
-  res.send('cookies set.');
+  res.redirect('/');
 });
 // Start up the Node server
 app.listen(PORT, () => {
