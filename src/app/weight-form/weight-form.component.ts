@@ -15,10 +15,10 @@ export class WeightFormComponent implements OnInit {
   message: string;
   model = new User(this.email, 0);
   onSubmit() {
-    const weight = this.model.weight;
-    this.message = 'Submitted New Weight: ' + weight + 'kg';
-    this.weightService.addWeight(this.model, this.token);
+    this.weightService.addWeight(this.model, this.token)
+    .subscribe(weight => this.message = 'Submitted New Weight: ' + weight + 'kg');
     this.added.emit('complete');
+
   }
   ngOnInit() {}
 }
