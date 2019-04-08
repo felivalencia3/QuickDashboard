@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { WeightService } from '../weight.service';
+import { Entry } from '../entry';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,6 +12,7 @@ export class DashboardComponent implements OnInit {
   token: string;
   index: number;
   name: string;
+  weightEntries: Entry[];
   constructor(private cookieService: CookieService, private weightService: WeightService) { }
 
   ngOnInit(): void {
@@ -18,6 +20,11 @@ export class DashboardComponent implements OnInit {
     this.token = this.cookieService.get('token');
     this.index = this.email.indexOf('@');
     this.name = this.email.slice(0, this.index);
+    this.getWeights();
+  }
+  getWeights(): void {
+    this.weightService.getEntryList(this.email, this.token)
+    .subscribe(entries => this.weightEntries = entries);
   }
 
 }

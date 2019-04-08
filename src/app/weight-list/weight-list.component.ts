@@ -10,12 +10,8 @@ import { Entry } from '../entry';
 export class WeightListComponent implements OnInit {
   @Input() token: string;
   @Input() email: string;
-  weightEntries: Entry[];
+  @Input() weightEntries: Entry[];
   constructor(private weightService: WeightService) { }
   ngOnInit() {
-  }
-  getWeights(): void {
-    this.weightService.getEntryList(this.email, this.token)
-    .subscribe(entries => this.weightEntries = entries);
   }
 }
