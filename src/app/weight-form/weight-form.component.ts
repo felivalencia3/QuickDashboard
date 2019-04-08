@@ -17,7 +17,7 @@ export class WeightFormComponent implements OnInit {
   onSubmit() {
     const weight = this.model.weight;
     this.message = 'Submitted New Weight: ' + weight + 'kg';
-    this.weightService.addEntry(this.model, this.token);
+    this.weightService.addWeight(this.model, this.token);
     this.added.emit('complete');
   }
   ngOnInit() {}
