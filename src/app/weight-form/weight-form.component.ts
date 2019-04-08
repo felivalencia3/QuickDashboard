@@ -16,7 +16,7 @@ export class WeightFormComponent implements OnInit {
   model = new User(this.email, 0);
   onSubmit() {
     this.weightService.addWeight(this.model.weight, this.email, this.token)
-    .subscribe(weight => this.message = 'Submitted New Weight: ' + weight + 'kg');
+    .subscribe(obj => this.message = 'Submitted New Weight: ' + obj.weight + 'kg');
     this.added.emit('complete');
 
   }
