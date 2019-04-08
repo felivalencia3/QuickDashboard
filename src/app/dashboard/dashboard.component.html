@@ -6,7 +6,7 @@
   </li>
   <li>
     <p>WeightForm:</p>
-    <app-weight-form [token]="token" [email]="email"></app-weight-form>
+    <app-weight-form (added)="getWeights()" [token]="token" [email]="email"></app-weight-form>
     <app-weight-list [weightEntries]="weightEntries" [token]="token" [email]="email"></app-weight-list>
   </li>
   <li>

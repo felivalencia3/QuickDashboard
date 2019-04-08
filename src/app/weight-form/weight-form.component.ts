@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../user';
 import { WeightService } from '../weight.service';
 
@@ -9,6 +9,7 @@ import { WeightService } from '../weight.service';
 })
 export class WeightFormComponent implements OnInit {
   constructor(private weightService: WeightService) {}
+  @Output() added = new EventEmitter<string>();
   @Input() email: string;
   @Input() token: string;
   message: string;
@@ -17,6 +18,7 @@ export class WeightFormComponent implements OnInit {
     const weight = this.model.weight;
     this.message = 'Submitted New Weight: ' + weight + 'kg';
     this.weightService.addEntry(this.model, this.token);
+    this.added.emit('complete');
   }
   ngOnInit() {}
 }
