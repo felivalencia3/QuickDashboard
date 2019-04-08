@@ -13,7 +13,8 @@ export class WeightFormComponent implements OnInit {
   @Input() token: string;
   message: string;
   model = new User(this.email, 0);
-  onSubmit(weight: number) {
+  onSubmit() {
+    const weight = this.model.weight;
     this.message = 'Submitted New Weight: ' + weight + 'kg';
     this.weightService.addEntry(this.model, this.token);
   }
