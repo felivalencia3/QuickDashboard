@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Entry } from './entry';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,19 @@ export class WeightService {
       })
     };
     return this.http.get<Entry[]>(this.serverUrl + '?user=' + email, httpOptions);
+  }
+  addEntry(user: User, token: string): void {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.post<Entry[]>(`${this.serverUrl}/new`, {
+      'entry': {
+        'user': user.email,
+        'weight': user.weight
+      }
+    }, httpOptions);
   }
 }
