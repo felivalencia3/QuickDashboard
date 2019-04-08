@@ -1,13 +1,12 @@
 export class UserData {
-  id: string;
-  date: Date;
-  email: string;
-  weight: number;
-  height: number;
-  age: number;
-  gender: string;
   bmi: number;
   bmr: number;
-  idealweight: number;
-
+  IdealWeight: number;
+  _id: string;
 }
+/*
+"BMI": 20,
+    "BMR": 1611,
+    "IdealWeight": 67,
+    "_id": "5cabd84455d55100043f904f"
+*/
