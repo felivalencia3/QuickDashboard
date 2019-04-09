@@ -1,4 +1,4 @@
-<div *ngIf="bmi && bmr && idealWeight">
+<div [hidden]="!(bmi && bmr && idealWeight)">
   <h1>BMI: {{ bmi }}</h1>
   <h1>BMR: {{ bmr }} Daily Calories</h1>
   <h1>Ideal Weight: {{ idealWeight }}kg</h1>
