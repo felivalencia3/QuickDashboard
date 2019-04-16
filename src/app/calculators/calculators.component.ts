@@ -9,9 +9,7 @@ import { WeightService } from '../weight.service';
 export class CalculatorsComponent implements OnInit {
   @Input() token: string;
   @Input() email: string;
-  bmi: number;
-  bmr: number;
-  idealWeight: number;
+  data: Object;
   constructor(public weightService: WeightService) { }
   ngOnInit() {
     this.setCalculators();
@@ -19,9 +17,7 @@ export class CalculatorsComponent implements OnInit {
   setCalculators() {
     this.weightService.getCalculators(this.token, this.email)
     .subscribe((data => {
-      this.bmi = data.bmi;
-      this.bmr = data.bmr;
-      this.idealWeight = data.IdealWeight;
+      this.data = data;
     }));
   }
 }
