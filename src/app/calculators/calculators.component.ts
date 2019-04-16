@@ -14,7 +14,7 @@ export class CalculatorsComponent implements OnInit {
   idealWeight: number;
   constructor(public weightService: WeightService) { }
   ngOnInit() {
-
+    this.setCalculators();
   }
   setCalculators() {
     this.weightService.getCalculators(this.token, this.email)
