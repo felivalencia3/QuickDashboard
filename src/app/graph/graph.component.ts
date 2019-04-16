@@ -21,7 +21,7 @@ export class GraphComponent implements OnInit {
   type = 'line';
   data: Object;
   options: Object;
-  constructor(weightService: WeightService) {
+  ngOnInit() {
     this.weightEntries.forEach(entry => {
       this.dates.push(entry.date);
       this.weights.push(entry.weight);
@@ -41,6 +41,4 @@ export class GraphComponent implements OnInit {
       maintainAspectRatio: false
     };
   }
-
-  ngOnInit() {}
 }
