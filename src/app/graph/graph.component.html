@@ -1,4 +1,8 @@
-<!--<chart [type]="type" [data]="data" [options]="options"></chart>-->
+<div *ngIf="chartReady"><chart [type]="type" [data]="data" [options]="options"></chart></div>
 <p>Diagnostic:
-  WeightEntries: {{weightEntries}}
+  <span *ngIf="chartReady">
+    Dates: {{dates}}
+    Weights: {{weights}}
+  </span>
+  <span *ngIf="weightEntries">WeightEntries: {{weightEntries}}</span>
 </p>

@@ -15,22 +15,30 @@ import { Entry } from '../entry';
 })
 export class GraphComponent implements OnInit {
   @Input() weightEntries: Entry[];
-  ngOnInit() {}
-}
-/*
+  chartReady: boolean;
+  weights: number[];
+  dates: string[];
   type = 'line';
-  data = {
-    labels: ,
-    datasets: [
-      {
-        borderColor: 'rgb(220,20,60)',
-        label: 'Weight Entries',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
+  data: Object;
   options = {
     responsive: true,
     maintainAspectRatio: false
   };
-*/
+  ngOnInit() {
+    this.weightEntries.forEach(entry => {
+      const date = entry.date.getDate() + '-' + (entry.date.getMonth() + 1) + '-' + entry.date.getFullYear();
+      this.dates.push(date);
+      this.weights.push(entry.weight);
+    });
+    this.data = {
+      labels: this.dates,
+      datasets: [
+        {
+          borderColor: 'rgb(220,20,60)',
+          label: 'Weight Entries',
+          data: this.weights
+        }
+      ]
+    };
+  }
+}
