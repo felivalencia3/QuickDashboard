@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import * as Chart from 'chart.js';
 import { Entry } from '../entry';
-import { WeightService } from '../weight.service';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
@@ -16,18 +15,19 @@ import { WeightService } from '../weight.service';
 })
 export class GraphComponent implements OnInit {
   @Input() weightEntries: Entry[];
-  dates: Date[];
   weights: number[];
-  type = 'line';
+  dates: Date[];
+  type: string;
   data: Object;
   options: Object;
   ngOnInit() {
     this.weightEntries.forEach(entry => {
-      this.dates.push(entry.date);
       this.weights.push(entry.weight);
+      this.dates.push(entry.date);
     });
+    this.type = 'line';
     this.data = {
-      labels: this.dates,
+      labels:   this.dates,
       datasets: [
         {
           borderColor: 'rgb(220,20,60)',
@@ -36,9 +36,22 @@ export class GraphComponent implements OnInit {
         }
       ]
     };
-    this.options = {
-      responsive: true,
-      maintainAspectRatio: false
-    };
   }
 }
+/*
+  type = 'line';
+  data = {
+    labels: ,
+    datasets: [
+      {
+        borderColor: 'rgb(220,20,60)',
+        label: 'Weight Entries',
+        data: [65, 59, 80, 81, 56, 55, 40]
+      }
+    ]
+  };
+  options = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+*/
