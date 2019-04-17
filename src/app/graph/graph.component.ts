@@ -15,28 +15,7 @@ import { Entry } from '../entry';
 })
 export class GraphComponent implements OnInit {
   @Input() weightEntries: Entry[];
-  weights: number[];
-  dates: Date[];
-  type: string;
-  data: Object;
-  options: Object;
-  ngOnInit() {
-    this.weightEntries.forEach(entry => {
-      this.weights.push(entry.weight);
-      this.dates.push(entry.date);
-    });
-    this.type = 'line';
-    this.data = {
-      labels:   this.dates,
-      datasets: [
-        {
-          borderColor: 'rgb(220,20,60)',
-          label: 'Weight Entries',
-          data: this.weights
-        }
-      ]
-    };
-  }
+  ngOnInit() {}
 }
 /*
   type = 'line';
