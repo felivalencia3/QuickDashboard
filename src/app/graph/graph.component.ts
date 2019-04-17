@@ -40,5 +40,6 @@ export class GraphComponent implements OnInit {
         }
       ]
     };
+    this.chartReady = true;
   }
 }
